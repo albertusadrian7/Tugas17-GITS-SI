@@ -16,10 +16,7 @@ function get_buku()
             'id' => $row['id'],
             'judul' => $row['judul'],
             'penulis' => $row['penulis'],
-            'penerbit' => $row['penerbit'],
-            'tgl_terbit' => $row['tgl_terbit'],
             'rating' => $row['rating'],
-            'gambar' => $row['gambar'],
             'harga' => $row['harga']
         ));
     }
@@ -45,10 +42,7 @@ function get_buku_id()
             'id' => $row['id'],
             'judul' => $row['judul'],
             'penulis' => $row['penulis'],
-            'penerbit' => $row['penerbit'],
-            'tgl_terbit' => $row['tgl_terbit'],
             'rating' => $row['rating'],
-            'gambar' => $row['gambar'],
             'harga' => $row['harga']
         );
     };
@@ -75,30 +69,21 @@ function insert_buku()
     $check = array(
         'id' => '', 
         'judul' => '', 
-        'penulis' => '', 
-        'penerbit' => '', 
-        'tgl_terbit' => '', 
-        'rating' => '', 
-        'gambar' => '', 
+        'penulis' => '',
+        'rating' => '',
         'harga' => '');
     $check_match = count(array_intersect_key($_POST, $check));
     $id = $_POST["id"];
     $judul = $_POST["judul"];
     $penulis = $_POST["penulis"];
-    $penerbit = $_POST["penerbit"];
-    $tgl_terbit = $_POST["tgl_terbit"];
     $rating = $_POST["rating"];
-    $gambar = $_POST["gambar"];
     $harga = $_POST["harga"];
     if($check_match == count($check)){
         $result = mysqli_query($conn, "INSERT INTO buku SET
         id = '$id',
         judul = '$judul',
         penulis = '$penulis',
-        penerbit = '$penerbit',
-        tgl_terbit = '$tgl_terbit',
         rating = '$rating',
-        gambar = '$gambar',
         harga = '$harga'");
         if($result) {
             $response = array(
@@ -129,22 +114,16 @@ function update_buku()
         $id = $_GET["id"];
         $check = array(
             'judul' => '', 
-            'penulis' => '', 
-            'penerbit' => '', 
-            'tgl_terbit' => '', 
-            'rating' => '', 
-            'gambar' => '', 
+            'penulis' => '',
+            'rating' => '',
             'harga' => '');
         $check_match = count(array_intersect_key($_POST, $check));
         $judul = $_POST["judul"];
         $penulis = $_POST["penulis"];
-        $penerbit = $_POST["penerbit"];
-        $tgl_terbit = $_POST["tgl_terbit"];
         $rating = $_POST["rating"];
-        $gambar = $_POST["gambar"];
         $harga = $_POST["harga"];
         if($check_match == count($check)) {
-            $result = mysqli_query($conn, "UPDATE buku SET judul = '$judul',penulis = '$penulis',penerbit = '$penerbit',tgl_terbit = '$tgl_terbit',rating = '$rating',gambar = '$gambar',harga = '$harga' WHERE id = '$id'");
+            $result = mysqli_query($conn, "UPDATE buku SET judul = '$judul',penulis = '$penulis',rating = '$rating',harga = '$harga' WHERE id = '$id'");
             if($result) {
                 $response=array(
                     'status' => 1,
@@ -178,8 +157,8 @@ function update_buku()
 function delete_buku() 
 {
     global $conn;
-    if (!empty($_GET['id'])) {
-        $id = $_GET['id'];
+    if (!empty($_POST['id'])) {
+        $id = $_POST['id'];
         $queryDelete = "DELETE FROM buku WHERE id=" . $id;
         mysqli_query($conn, $queryDelete);
         if (mysqli_affected_rows($conn) > 0) {

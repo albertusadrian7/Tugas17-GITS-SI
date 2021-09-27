@@ -5,19 +5,20 @@ if (function_exists($_GET['function'])) {
     $_GET['function']();
 }
 
-// Fungsi untuk get seluruh buku
-function get_buku()
+// Fungsi untuk get seluruh pengguna
+function get_pengguna()
 {
     global $conn;
-    $query = mysqli_query($conn, "SELECT * FROM buku");
+    $query = mysqli_query($conn, "SELECT * FROM pengguna");
     $result = array();
     while ($row = mysqli_fetch_array($query)) {
         array_push($result, array(
-            'id' => $row['id'],
-            'judul' => $row['judul'],
-            'penulis' => $row['penulis'],
-            'rating' => $row['rating'],
-            'harga' => $row['harga']
+            'id_user' => $row['id_user'],
+            'username' => $row['username'],
+            'email' => $row['email'],
+            'nama' => $row['nama'],
+            'alamat' => $row['alamat'],
+            'gambar' => $row['gambar']
         ));
     }
     $response = array(
@@ -30,20 +31,21 @@ function get_buku()
 }
 
 
-// Fungsi untuk get buku berdasarkan id
-function get_buku_id()
+// Fungsi untuk get pengguna berdasarkan id
+function get_pengguna_id()
 {
     global $conn;
-    $id =  $_GET['id'];
-    $query = mysqli_query($conn, "SELECT * FROM buku WHERE id=" . $id);
+    $id_user =  $_GET['id_user'];
+    $query = mysqli_query($conn, "SELECT * FROM pengguna WHERE id_user=" . $id_user);
     $result = array();
     while ($row = $query->fetch_assoc()) {
         $result = array(
-            'id' => $row['id'],
-            'judul' => $row['judul'],
-            'penulis' => $row['penulis'],
-            'rating' => $row['rating'],
-            'harga' => $row['harga']
+            'id_user' => $row['id_user'],
+            'username' => $row['username'],
+            'email' => $row['email'],
+            'nama' => $row['nama'],
+            'alamat' => $row['alamat'],
+            'gambar' => $row['gambar']
         );
     };
     if ($result) {
@@ -62,39 +64,42 @@ function get_buku_id()
     echo json_encode($response);
 }
 
-// Fungsi untuk insert buku
-function insert_buku()
+// Fungsi untuk insert pengguna
+function insert_pengguna()
 {
     global $conn;
     $check = array(
-        'id' => '', 
-        'judul' => '', 
-        'penulis' => '',
-        'rating' => '',
-        'harga' => '');
+        'id_user' => '',
+        'username' => '',
+        'email' => '',
+        'nama' => '',
+        'alamat' => '',
+        'gambar' => '');
     $check_match = count(array_intersect_key($_POST, $check));
-    $id = $_POST["id"];
-    $judul = $_POST["judul"];
-    $penulis = $_POST["penulis"];
-    $rating = $_POST["rating"];
-    $harga = $_POST["harga"];
+    $id_user = $_POST["id_user"];
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $nama = $_POST["nama"];
+    $alamat = $_POST["alamat"];
+    $gambar = $_POST["gambar"];
     if($check_match == count($check)){
-        $result = mysqli_query($conn, "INSERT INTO buku SET
-        id = '$id',
-        judul = '$judul',
-        penulis = '$penulis',
-        rating = '$rating',
-        harga = '$harga'");
+        $result = mysqli_query($conn, "INSERT INTO pengguna SET
+        id_user = '$id_user',
+        username = '$username',
+        email = '$email',
+        nama = '$nama',
+        alamat = '$alamat',
+        gambar = '$gambar'");
         if($result) {
             $response = array(
                 'status' => 1,
-                'message' =>'Insert Success'
+                'message' =>'Insert user success!'
             );
         }
         else {
             $response = array(
                 'status' => 0,
-                'message' =>'Insert Failed.'
+                'message' =>'Insert user fail!'
             );
         }
     } else {
@@ -106,42 +111,48 @@ function insert_buku()
     echo json_encode($response);
 }
 
-// Fungsi untuk update buku
-function update_buku() 
+// Fungsi untuk update pengguna
+function update_pengguna() 
 {
     global $conn;
-    if (!empty($_POST["id"])) {
+    if (!empty($_POST["id_user"])) {
         $check = array(
-            'id' => '',
-            'judul' => '', 
-            'penulis' => '',
-            'rating' => '',
-            'harga' => '');
+            'id_user' => '',
+            'nama' => '',
+            'username' => '',
+            'gambar' => '');
         $check_match = count(array_intersect_key($_POST, $check));
-        $id = $_POST["id"];
-        $judul = $_POST["judul"];
-        $penulis = $_POST["penulis"];
-        $rating = $_POST["rating"];
-        $harga = $_POST["harga"];
+        $id_user = $_POST["id_user"];
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $nama = $_POST["nama"];
+        $alamat = $_POST["alamat"];
+        $gambar = $_POST["gambar"];
         if($check_match == count($check)) {
-            $result = mysqli_query($conn, "UPDATE buku SET judul = '$judul',penulis = '$penulis',rating = '$rating',harga = '$harga' WHERE id = '$id'");
+            $result = mysqli_query($conn, "UPDATE pengguna SET 
+            username = '$username',
+            email = '$email',
+            nama = '$nama',
+            alamat = '$alamat',
+            gambar = '$gambar'
+            WHERE id_user = '$id_user'");
             if($result) {
                 $response=array(
                     'status' => 1,
-                    'message' =>'Update Success'
+                    'message' =>'Update user success!'
                 );
             }
             else {
                 $response=array(
                     'status' => 0,
-                    'message' =>'Update Failed'
+                    'message' =>'Update user fail!'
                 );
             }
         } else {
             $response=array(
                 'status' => 0,
                 'message' =>'Wrong Parameter',
-                'data'=> $id
+                'data'=> $id_user
             );
         }
     } else {
@@ -154,23 +165,23 @@ function update_buku()
     echo json_encode($response);
 }
 
-// Fungsi untuk delete buku
-function delete_buku() 
+// Fungsi untuk delete pengguna
+function delete_pengguna() 
 {
     global $conn;
-    if (!empty($_POST['id'])) {
-        $id = $_POST['id'];
-        $queryDelete = "DELETE FROM buku WHERE id=" . $id;
+    if (!empty($_POST['id_user'])) {
+        $id_user = $_POST['id_user'];
+        $queryDelete = "DELETE FROM pengguna WHERE id_user=" . $id_user;
         mysqli_query($conn, $queryDelete);
         if (mysqli_affected_rows($conn) > 0) {
             $response = array(
                 'status' => 1,
-                'message' => 'Delete Success'
+                'message' => 'Delete user success!'
             );
         } else {
             $response = array(
                 'status' => 0,
-                'message' => 'Delete Failed'
+                'message' => 'Delete user fail!'
             );
         }
     } else {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2021 at 04:15 PM
+-- Generation Time: Sep 28, 2021 at 03:52 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -55,7 +55,8 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 (15, 'Overthink', 'Michson', 3, 125000),
 (17, 'Malaikat', 'Post', 3, 120000),
 (20, 'Pohoo', 'Boruto', 3, 120000),
-(21, 'Ada deh hayo', '2', 13213100, 0);
+(21, 'Ada deh hayo', '2', 13213100, 0),
+(23, 'Hari Selasa', 'Joko Anwar', 5.1, 300000);
 
 -- --------------------------------------------------------
 
@@ -77,10 +78,10 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`id_user`, `username`, `email`, `nama`, `alamat`, `gambar`) VALUES
-(1, 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian Susanto', 'Jalan Gajah Mada No. 100', 'albertusadrian.jpg'),
+(1, 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian Susanto', 'Jalan Bantul KM. 5', 'albertusadrian.jpg'),
 (2, 'efraimwijanarko', 'efraimwijanarko@mail.com', 'Efraim Wijanarko', 'Jalan Nogolaten No. 8 Yogyakarta', 'efraimwijanarko.jpg'),
 (3, 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'michson.jpg'),
-(4, 'susianasunjaya', 'susianasunjaya@mail.com', 'Susiana Sunjaya', 'Jalan Imogiri Timur KM 4.5', 'susi.jpg');
+(6, 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4.2', 'yoelchristy.jpg');
 
 --
 -- Indexes for dumped tables
@@ -106,13 +107,13 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

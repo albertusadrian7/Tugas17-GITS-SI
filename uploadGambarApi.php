@@ -1,34 +1,41 @@
 <?php
 
-    $image = $_FILES['file']['tmp_name'];
-    $imagename = $_FILES['file']['name'];
+require_once('connection.php');
+if (function_exists($_GET['function'])) {
+    $_GET['function']();
+}
+
+function upload_gambar(){
+    $gambar = $_FILES['file']['tmp_name'];
+    $namaGambar = $_FILES['file']['name'];
 
     // Path untuk menyimpan gambar
-    $file_path = $_SERVER['DOCUMENT_ROOT'] . '/bukuRestApi/';
+    // Gambar akan disimpan dalam folder user_img yang terdapat pada direktori root bukuRestApi
+    $file_path = $_SERVER['DOCUMENT_ROOT'] . '/bukuRestApi/user_img/';
     $response = array();
     if (!file_exists($file_path)) {
         mkdir($file_path, 0777, true);
     }
-    if(!$image){
+    if(!$gambar){
         $response = array(
-            'status' = 0,
+            'status' => 0,
             'message' => "Gagal menemukan gambar!"
         );
     }
     else{
-        if(move_uploaded_file($image, $file_path.'/'.$imagename)){
+        if(move_uploaded_file($gambar, $file_path.'/'.$namaGambar)){
             $response = array(
-                'status' = 1,
+                'status' => 1,
                 'message' => "Sukses upload gambar!"
             );
         } else {
             $response = array(
-                'status' = 0,
+                'status' => 0,
                 'message' => "Gagal upload gambar!"
             );
         }
     }
     header('Content-Type: application/json');
     echo json_encode($response);
-
+}
 ?>

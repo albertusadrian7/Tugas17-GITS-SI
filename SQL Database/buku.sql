@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2021 at 04:15 PM
+-- Generation Time: Sep 28, 2021 at 03:52 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -55,7 +55,8 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 (15, 'Overthink', 'Michson', 3, 125000),
 (17, 'Malaikat', 'Post', 3, 120000),
 (20, 'Pohoo', 'Boruto', 3, 120000),
-(21, 'Ada deh hayo', '2', 13213100, 0);
+(21, 'Ada deh hayo', '2', 13213100, 0),
+(23, 'Hari Selasa', 'Joko Anwar', 5.1, 300000);
 
 --
 -- Indexes for dumped tables
@@ -75,7 +76,7 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

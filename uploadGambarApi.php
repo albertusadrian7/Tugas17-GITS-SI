@@ -11,7 +11,7 @@ function upload_gambar(){
 
     // Path untuk menyimpan gambar
     // Gambar akan disimpan dalam folder user_img yang terdapat pada direktori root bukuRestApi
-    $file_path = $_SERVER['DOCUMENT_ROOT'] . '/bukuRestApi/user_img/';
+    $file_path = 'user_img';
     $response = array();
     if (!file_exists($file_path)) {
         mkdir($file_path, 0777, true);

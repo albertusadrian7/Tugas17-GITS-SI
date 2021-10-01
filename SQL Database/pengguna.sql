@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2021 at 03:52 PM
+-- Generation Time: Oct 01, 2021 at 06:36 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `pengguna` (
   `id_user` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
@@ -40,11 +41,15 @@ CREATE TABLE `pengguna` (
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_user`, `username`, `email`, `nama`, `alamat`, `gambar`) VALUES
-(1, 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian Susanto', 'Jalan Bantul KM. 5', 'albertusadrian.jpg'),
-(2, 'efraimwijanarko', 'efraimwijanarko@mail.com', 'Efraim Wijanarko', 'Jalan Nogolaten No. 8 Yogyakarta', 'efraimwijanarko.jpg'),
-(3, 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'michson.jpg'),
-(6, 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4.2', 'yoelchristy.jpg');
+INSERT INTO `pengguna` (`id_user`, `username`, `password`, `email`, `nama`, `alamat`, `gambar`) VALUES
+(1, 'albertusadrian', 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian Susanto', 'Jalan Bantul KM. 5', 'IMG_20210621_103453.jpg'),
+(3, 'michsonrabunto', 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'IMG20210901161724.jpg'),
+(6, 'yoelchristy', 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4', 'FB_IMG_1627711133505.jpg'),
+(7, 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin', 'Screenshot_20200829-144221.jpg'),
+(16, 'adriansusanto', 'adrian', 'adrian@mail.com', 'Adrian Susanto', 'Jalan Hayam Wuruk', 'IMG20210929074115.jpg'),
+(17, 'efraim', 'efraim', 'efraim@gmail.com', 'Efraim Wijanarko', 'Jalan Nologaten', 'user.png'),
+(18, 'albertusadriansusanto', 'yonatanadrian', 'natanadrian@mail.com', 'Albertus Adrian Susanto', 'Jalan Imogiri Barat', 'IMG_20210102_182438_977.jpg'),
+(21, 'samudera', 'samudera', 'Samudera', 'Samudera', 'samudera', 'IMG_20210515_224641_384.jpg');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +69,7 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

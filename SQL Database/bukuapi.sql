@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2021 at 03:52 PM
+-- Generation Time: Oct 01, 2021 at 06:36 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -51,12 +51,10 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 (9, 'Harry Potter #5: The Order Of The Phoenix', 'J.k. Rowling', 4.5, 260000),
 (10, 'Harry Potter #4: The Goblet Of Fire', 'J.k. Rowling', 4.56, 208000),
 (11, 'Harry', 'Adrian', 4.5, 90000),
-(12, 'Test 123', 'Alexia Adams', 3.81, 65000),
-(15, 'Overthink', 'Michson', 3, 125000),
-(17, 'Malaikat', 'Post', 3, 120000),
-(20, 'Pohoo', 'Boruto', 3, 120000),
-(21, 'Ada deh hayo', '2', 13213100, 0),
-(23, 'Hari Selasa', 'Joko Anwar', 5.1, 300000);
+(12, 'Hello World', 'Alexia Adams', 3.81, 65000),
+(15, 'Overthink', '3', 125000, 0),
+(17, 'Malaikat Juga Tahu', '120000', 4, 3000),
+(27, 'Hancur', 'kala', 3, 2000);
 
 -- --------------------------------------------------------
 
@@ -67,6 +65,7 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 CREATE TABLE `pengguna` (
   `id_user` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
@@ -77,11 +76,15 @@ CREATE TABLE `pengguna` (
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_user`, `username`, `email`, `nama`, `alamat`, `gambar`) VALUES
-(1, 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian Susanto', 'Jalan Bantul KM. 5', 'albertusadrian.jpg'),
-(2, 'efraimwijanarko', 'efraimwijanarko@mail.com', 'Efraim Wijanarko', 'Jalan Nogolaten No. 8 Yogyakarta', 'efraimwijanarko.jpg'),
-(3, 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'michson.jpg'),
-(6, 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4.2', 'yoelchristy.jpg');
+INSERT INTO `pengguna` (`id_user`, `username`, `password`, `email`, `nama`, `alamat`, `gambar`) VALUES
+(1, 'albertusadrian', 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian Susanto', 'Jalan Bantul KM. 5', 'IMG_20210621_103453.jpg'),
+(3, 'michsonrabunto', 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'IMG20210901161724.jpg'),
+(6, 'yoelchristy', 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4', 'FB_IMG_1627711133505.jpg'),
+(7, 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin', 'Screenshot_20200829-144221.jpg'),
+(16, 'adriansusanto', 'adrian', 'adrian@mail.com', 'Adrian Susanto', 'Jalan Hayam Wuruk', 'IMG20210929074115.jpg'),
+(17, 'efraim', 'efraim', 'efraim@gmail.com', 'Efraim Wijanarko', 'Jalan Nologaten', 'user.png'),
+(18, 'albertusadriansusanto', 'yonatanadrian', 'natanadrian@mail.com', 'Albertus Adrian Susanto', 'Jalan Imogiri Barat', 'IMG_20210102_182438_977.jpg'),
+(21, 'samudera', 'samudera', 'Samudera', 'Samudera', 'samudera', 'IMG_20210515_224641_384.jpg');
 
 --
 -- Indexes for dumped tables
@@ -107,13 +110,13 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,6 +15,7 @@ function get_pengguna()
         array_push($result, array(
             'id_user' => $row['id_user'],
             'username' => $row['username'],
+            'password' => $row['password'],
             'email' => $row['email'],
             'nama' => $row['nama'],
             'alamat' => $row['alamat'],
@@ -42,6 +43,7 @@ function get_pengguna_id()
         $result = array(
             'id_user' => $row['id_user'],
             'username' => $row['username'],
+            'password' => $row['password'],
             'email' => $row['email'],
             'nama' => $row['nama'],
             'alamat' => $row['alamat'],
@@ -71,6 +73,7 @@ function insert_pengguna()
     $check = array(
         'id_user' => '',
         'username' => '',
+        'password' => '',
         'email' => '',
         'nama' => '',
         'alamat' => '',
@@ -78,6 +81,7 @@ function insert_pengguna()
     $check_match = count(array_intersect_key($_POST, $check));
     $id_user = $_POST["id_user"];
     $username = $_POST["username"];
+    $password = $_POST["password"];
     $email = $_POST["email"];
     $nama = $_POST["nama"];
     $alamat = $_POST["alamat"];
@@ -86,6 +90,7 @@ function insert_pengguna()
         $result = mysqli_query($conn, "INSERT INTO pengguna SET
         id_user = '$id_user',
         username = '$username',
+        password = '$password',
         email = '$email',
         nama = '$nama',
         alamat = '$alamat',
@@ -118,12 +123,16 @@ function update_pengguna()
     if (!empty($_POST["id_user"])) {
         $check = array(
             'id_user' => '',
-            'nama' => '',
             'username' => '',
+            'password' => '',
+            'email' => '',
+            'nama' => '',
+            'alamat' => '',
             'gambar' => '');
         $check_match = count(array_intersect_key($_POST, $check));
         $id_user = $_POST["id_user"];
         $username = $_POST["username"];
+        $password = $_POST["password"];
         $email = $_POST["email"];
         $nama = $_POST["nama"];
         $alamat = $_POST["alamat"];
@@ -131,6 +140,7 @@ function update_pengguna()
         if($check_match == count($check)) {
             $result = mysqli_query($conn, "UPDATE pengguna SET 
             username = '$username',
+            password = '$password',
             email = '$email',
             nama = '$nama',
             alamat = '$alamat',
@@ -194,6 +204,54 @@ function delete_pengguna()
     echo json_encode($response);
 }
 
+
+function login_pengguna(){
+    global $conn;
+    if ($_POST) {
+        // $username = mysqli_real_escape_string($conn,$_POST["username"]);
+        // $password = mysqli_real_escape_string($conn,$_POST["password"]);
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $sql = "SELECT * FROM pengguna WHERE username = '$username' and password = '$password'";
+        $query = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($query);
+        $result = array();
+        if ($count > 0) {
+            while ($row = mysqli_fetch_array($query)) {
+                array_push($result, array(
+                    'id_user' => $row['id_user'],
+                    'username' => $row['username'],
+                    'password' => $row['password'],
+                    'email' => $row['email'],
+                    'nama' => $row['nama'],
+                    'alamat' => $row['alamat'],
+                    'gambar' => $row['gambar']
+                ));
+            }
+        }
+        if ($result) {
+            $response = array(
+                'status' => 1,
+                'message' => 'Login berhasil',
+                'data' => $result
+            );
+        } else {
+            $response = array(
+                'status' => 0,
+                'message' => 'Username atau password Anda salah!',
+            );
+        }
+    } else {
+        $response = array(
+            'status' => -1,
+            'message' => 'Silakan input username dan password Anda!',
+        );
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
+
 ?>
+
 
 

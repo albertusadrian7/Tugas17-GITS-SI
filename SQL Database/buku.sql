@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2021 at 03:52 PM
+-- Generation Time: Oct 01, 2021 at 06:26 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -51,12 +51,10 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 (9, 'Harry Potter #5: The Order Of The Phoenix', 'J.k. Rowling', 4.5, 260000),
 (10, 'Harry Potter #4: The Goblet Of Fire', 'J.k. Rowling', 4.56, 208000),
 (11, 'Harry', 'Adrian', 4.5, 90000),
-(12, 'Test 123', 'Alexia Adams', 3.81, 65000),
-(15, 'Overthink', 'Michson', 3, 125000),
-(17, 'Malaikat', 'Post', 3, 120000),
-(20, 'Pohoo', 'Boruto', 3, 120000),
-(21, 'Ada deh hayo', '2', 13213100, 0),
-(23, 'Hari Selasa', 'Joko Anwar', 5.1, 300000);
+(12, 'Hello World', 'Alexia Adams', 3.81, 65000),
+(15, 'Overthink', '3', 125000, 0),
+(17, 'Malaikat Juga Tahu', '120000', 4, 3000),
+(27, 'Hancur', 'kala', 3, 2000);
 
 --
 -- Indexes for dumped tables
@@ -76,7 +74,7 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2021 at 06:26 PM
+-- Generation Time: Oct 03, 2021 at 07:53 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -50,11 +50,10 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 (8, 'Harry Potter and the Prisoner of Azkaban', 'J.k. Rowling', 4.57, 535000),
 (9, 'Harry Potter #5: The Order Of The Phoenix', 'J.k. Rowling', 4.5, 260000),
 (10, 'Harry Potter #4: The Goblet Of Fire', 'J.k. Rowling', 4.56, 208000),
-(11, 'Harry', 'Adrian', 4.5, 90000),
+(11, 'Harry', 'JK. Rowling', 4.5, 90000),
 (12, 'Hello World', 'Alexia Adams', 3.81, 65000),
-(15, 'Overthink', '3', 125000, 0),
 (17, 'Malaikat Juga Tahu', '120000', 4, 3000),
-(27, 'Hancur', 'kala', 3, 2000);
+(27, 'Hancur', 'Sunaryo', 3.5, 25000);
 
 --
 -- Indexes for dumped tables

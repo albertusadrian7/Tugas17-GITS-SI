@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2021 at 06:36 PM
+-- Generation Time: Oct 03, 2021 at 07:53 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -50,11 +50,10 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 (8, 'Harry Potter and the Prisoner of Azkaban', 'J.k. Rowling', 4.57, 535000),
 (9, 'Harry Potter #5: The Order Of The Phoenix', 'J.k. Rowling', 4.5, 260000),
 (10, 'Harry Potter #4: The Goblet Of Fire', 'J.k. Rowling', 4.56, 208000),
-(11, 'Harry', 'Adrian', 4.5, 90000),
+(11, 'Harry', 'JK. Rowling', 4.5, 90000),
 (12, 'Hello World', 'Alexia Adams', 3.81, 65000),
-(15, 'Overthink', '3', 125000, 0),
 (17, 'Malaikat Juga Tahu', '120000', 4, 3000),
-(27, 'Hancur', 'kala', 3, 2000);
+(27, 'Hancur', 'Sunaryo', 3.5, 25000);
 
 -- --------------------------------------------------------
 
@@ -77,14 +76,18 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`id_user`, `username`, `password`, `email`, `nama`, `alamat`, `gambar`) VALUES
-(1, 'albertusadrian', 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian Susanto', 'Jalan Bantul KM. 5', 'IMG_20210621_103453.jpg'),
+(1, 'albertusadrian', 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian', 'Jalan Bantul KM. 5', 'IMG_20210515_225134_344.jpg'),
 (3, 'michsonrabunto', 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'IMG20210901161724.jpg'),
 (6, 'yoelchristy', 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4', 'FB_IMG_1627711133505.jpg'),
 (7, 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin', 'Screenshot_20200829-144221.jpg'),
-(16, 'adriansusanto', 'adrian', 'adrian@mail.com', 'Adrian Susanto', 'Jalan Hayam Wuruk', 'IMG20210929074115.jpg'),
+(16, 'labfti', 'labfti', 'labfti@mail.com', 'Lab FTI 4', 'Jalan Palagan', 'IMG20210929074115.jpg'),
 (17, 'efraim', 'efraim', 'efraim@gmail.com', 'Efraim Wijanarko', 'Jalan Nologaten', 'user.png'),
-(18, 'albertusadriansusanto', 'yonatanadrian', 'natanadrian@mail.com', 'Albertus Adrian Susanto', 'Jalan Imogiri Barat', 'IMG_20210102_182438_977.jpg'),
-(21, 'samudera', 'samudera', 'Samudera', 'Samudera', 'samudera', 'IMG_20210515_224641_384.jpg');
+(21, 'samudera', 'samudera', 'Samudera', 'Samudera', 'samudera', 'IMG_20210515_224641_384.jpg'),
+(22, 'miekita', 'miekita', 'miekita@orang.com', 'Mie Kita Orang', 'Jalan C. Simanjuntak', 'IMG_20210928_WA0019.jpeg'),
+(28, 'case', 'case', 'case', 'Case Handphone', 'case', '1600150408117.jpg'),
+(29, 'keyboardyamaha', 'keyboardyamaha', 'keyboard@yamaha.com', 'Keyboard Yamaha', 'keyboardyamaha', 'IMG_20210621_103453.jpg'),
+(30, 'adriansusanto', 'adriansusanto', 'adriansusanto@yahoo.com', 'Adrian Susanto', 'Jalan Imogiri Timur', 'IMG_20210102_182438_977.jpg'),
+(31, 'overthink', 'overthink', 'overthink', 'Overthink', 'Jalan Jendral Sudirman', 'IMG20211002213637.jpg');
 
 --
 -- Indexes for dumped tables
@@ -116,7 +119,7 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2021 at 07:53 AM
+-- Generation Time: Oct 16, 2021 at 11:11 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -53,7 +53,7 @@ INSERT INTO `buku` (`id`, `judul`, `penulis`, `rating`, `harga`) VALUES
 (11, 'Harry', 'JK. Rowling', 4.5, 90000),
 (12, 'Hello World', 'Alexia Adams', 3.81, 65000),
 (17, 'Malaikat Juga Tahu', '120000', 4, 3000),
-(27, 'Hancur', 'Sunaryo', 3.5, 25000);
+(29, 'You Are The Best', 'Raya The Last Dragon', 3.6, 120000);
 
 -- --------------------------------------------------------
 
@@ -68,26 +68,28 @@ CREATE TABLE `pengguna` (
   `email` varchar(100) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
-  `gambar` text NOT NULL
+  `gambar` text NOT NULL,
+  `hardware_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_user`, `username`, `password`, `email`, `nama`, `alamat`, `gambar`) VALUES
-(1, 'albertusadrian', 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian', 'Jalan Bantul KM. 5', 'IMG_20210515_225134_344.jpg'),
-(3, 'michsonrabunto', 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'IMG20210901161724.jpg'),
-(6, 'yoelchristy', 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4', 'FB_IMG_1627711133505.jpg'),
-(7, 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin', 'Screenshot_20200829-144221.jpg'),
-(16, 'labfti', 'labfti', 'labfti@mail.com', 'Lab FTI 4', 'Jalan Palagan', 'IMG20210929074115.jpg'),
-(17, 'efraim', 'efraim', 'efraim@gmail.com', 'Efraim Wijanarko', 'Jalan Nologaten', 'user.png'),
-(21, 'samudera', 'samudera', 'Samudera', 'Samudera', 'samudera', 'IMG_20210515_224641_384.jpg'),
-(22, 'miekita', 'miekita', 'miekita@orang.com', 'Mie Kita Orang', 'Jalan C. Simanjuntak', 'IMG_20210928_WA0019.jpeg'),
-(28, 'case', 'case', 'case', 'Case Handphone', 'case', '1600150408117.jpg'),
-(29, 'keyboardyamaha', 'keyboardyamaha', 'keyboard@yamaha.com', 'Keyboard Yamaha', 'keyboardyamaha', 'IMG_20210621_103453.jpg'),
-(30, 'adriansusanto', 'adriansusanto', 'adriansusanto@yahoo.com', 'Adrian Susanto', 'Jalan Imogiri Timur', 'IMG_20210102_182438_977.jpg'),
-(31, 'overthink', 'overthink', 'overthink', 'Overthink', 'Jalan Jendral Sudirman', 'IMG20211002213637.jpg');
+INSERT INTO `pengguna` (`id_user`, `username`, `password`, `email`, `nama`, `alamat`, `gambar`, `hardware_id`) VALUES
+(1, 'albertusadrian', 'albertusadrian', 'albertusadrian@yahoo.com', 'Albertus Adrian', 'Jalan Bantul KM. 5', 'IMG_20210515_225134_344.jpg', '3291f7daf199870f'),
+(3, 'michsonrabunto', 'michsonrabunto', 'michsonrabunto@yahoo.com', 'Michson Rabunto', 'Jalan Sisingamangaraja No. 3', 'IMG20210901161724.jpg', '80bdaf5f02227e7f'),
+(6, 'yoelchristy', 'yoelchristy', 'yoelchristy@mail.co.id', 'Yoel Christy', 'Jalan Godean KM 4', 'blackwidow.jpg', '80bdaf5f02227e7f'),
+(7, 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin', 'IMG20210929074115.jpg', ''),
+(17, 'efraim', 'efraim', 'efraim@gmail.com', 'Efraim Wijanarko', 'Jalan Nologaten', 'IMG20210909101518.jpg', ''),
+(22, 'miekita', 'miekita', 'miekita@orang.com', 'Mie Kita Orang', 'Jalan C. Simanjuntak', 'IMG_20210928_WA0019.jpeg', ''),
+(29, 'keyboardyamaha', 'keyboardyamaha', 'keyboard@yamaha.com', 'Keyboard Yamaha', 'keyboardyamaha', 'IMG_20210621_103453.jpg', ''),
+(30, 'adriansusanto', 'adriansusanto', 'adriansusanto@yahoo.com', 'Adrian Susanto', 'Jalan Imogiri Timur', 'IMG_20210102_182438_977.jpg', ''),
+(31, 'overthink', 'overthink', 'overthink', 'Overthink', 'Jalan Jendral Sudirman', 'IMG20211002213637.jpg', ''),
+(37, 'adrian', 'adrian', 'adrian@mail.com', 'Adrian', 'Jalan Bantul', 'IMG20210514165950.jpg', ''),
+(38, 'captainamerica', 'captain', 'captainmarvel@mail.com', 'Captain America', 'Mars', '19CMAL.jpg', ''),
+(40, 'felix', 'felix', 'felixsusanto@mail.com', 'Antonius Felix Susanto', 'Jalan Imogiri Timur', 'IMG_20170924_110820.jpg', ''),
+(42, 'iot', 'iot', 'iot@mail.com', 'IoT', 'Jalan Pakuningratan', 'IMG20211006143433.jpg', '');
 
 --
 -- Indexes for dumped tables
@@ -113,13 +115,13 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

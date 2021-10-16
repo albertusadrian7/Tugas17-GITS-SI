@@ -19,7 +19,8 @@ function get_pengguna()
             'email' => $row['email'],
             'nama' => $row['nama'],
             'alamat' => $row['alamat'],
-            'gambar' => $row['gambar']
+            'gambar' => $row['gambar'],
+            'hardware_id' => $row['hardware_id']
         ));
     }
     $response = array(
@@ -40,15 +41,16 @@ function get_pengguna_id()
     $query = mysqli_query($conn, "SELECT * FROM pengguna WHERE id_user=" . $id_user);
     $result = array();
     while ($row = $query->fetch_assoc()) {
-        $result = array(
+        array_push($result, array(
             'id_user' => $row['id_user'],
             'username' => $row['username'],
             'password' => $row['password'],
             'email' => $row['email'],
             'nama' => $row['nama'],
             'alamat' => $row['alamat'],
-            'gambar' => $row['gambar']
-        );
+            'gambar' => $row['gambar'],
+            'hardware_id' => $row['hardware_id']
+        ));
     };
     if ($result) {
         $response = array(
@@ -128,7 +130,8 @@ function update_pengguna()
             'email' => '',
             'nama' => '',
             'alamat' => '',
-            'gambar' => '');
+            'gambar' => ''
+        );
         $check_match = count(array_intersect_key($_POST, $check));
         $id_user = $_POST["id_user"];
         $username = $_POST["username"];
@@ -217,7 +220,7 @@ function login_pengguna(){
         $count = mysqli_num_rows($query);
         $result = array();
         if ($count > 0) {
-            while ($row = mysqli_fetch_array($query)) {
+            while ($row = $query->fetch_assoc()) {
                 array_push($result, array(
                     'id_user' => $row['id_user'],
                     'username' => $row['username'],
@@ -225,9 +228,10 @@ function login_pengguna(){
                     'email' => $row['email'],
                     'nama' => $row['nama'],
                     'alamat' => $row['alamat'],
-                    'gambar' => $row['gambar']
+                    'gambar' => $row['gambar'],
+                    'hardware_id' => $row['hardware_id']
                 ));
-            }
+            };
         }
         if ($result) {
             $response = array(
@@ -238,20 +242,100 @@ function login_pengguna(){
         } else {
             $response = array(
                 'status' => 0,
-                'message' => 'Username atau password Anda salah!',
+                'message' => 'Username atau password Anda salah!'
             );
         }
     } else {
         $response = array(
             'status' => -1,
-            'message' => 'Silakan input username dan password Anda!',
+            'message' => 'Silakan input username dan password Anda!'
         );
     }
     header('Content-Type: application/json');
     echo json_encode($response);
 }
 
-?>
+// Fungsi untuk get pengguna berdasarkan id
+function get_pengguna_hardware_id()
+{
+    global $conn;
+    $hardware_id = $_POST['hardware_id'];
+    $query = mysqli_query($conn, "SELECT * FROM pengguna WHERE hardware_id= '$hardware_id'");
+    $result = array();
+    while ($row = $query->fetch_assoc()) {
+        array_push($result, array(
+            'id_user' => $row['id_user'],
+            'username' => $row['username'],
+            'password' => $row['password'],
+            'email' => $row['email'],
+            'nama' => $row['nama'],
+            'alamat' => $row['alamat'],
+            'gambar' => $row['gambar'],
+            'hardware_id' => $row['hardware_id']
+        ));
+    };
+    if ($result) {
+        $response = array(
+            'status' => 1,
+            'message' => 'Success',
+            'data' => $result
+        );
+    } else {
+        $response = array(
+            'status' => 0,
+            'message' => 'No data found'
+        );
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
+
+// Fungsi untuk update pengguna
+function update_pengguna_hardware() 
+{
+    global $conn;
+    if (!empty($_POST["id_user"])) {
+        $check = array(
+            'id_user' => '',
+            'hardware_id' => ''
+        );
+        $check_match = count(array_intersect_key($_POST, $check));
+        $id_user = $_POST["id_user"];
+        $hardware_id = $_POST["hardware_id"];
+        if($check_match == count($check)) {
+            $result = mysqli_query($conn, "UPDATE pengguna SET 
+            hardware_id = '$hardware_id'
+            WHERE id_user = '$id_user'");
+            if($result) {
+                $response=array(
+                    'status' => 1,
+                    'message' =>'Update user hardware success!'
+                );
+            }
+            else {
+                $response=array(
+                    'status' => 0,
+                    'message' =>'Update user hardware fail!'
+                );
+            }
+        } else {
+            $response=array(
+                'status' => 0,
+                'message' =>'Wrong Parameter',
+                'data'=> $id_user
+            );
+        }
+    } else {
+        $response = array(
+            'status' => 0,
+            'message' => 'Please provide an id'
+        );
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
+
+ ?>
 
 
 

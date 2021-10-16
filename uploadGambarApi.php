@@ -5,7 +5,8 @@ if (function_exists($_GET['function'])) {
     $_GET['function']();
 }
 
-function upload_gambar(){
+function upload_gambar()
+{
     $gambar = $_FILES['file']['tmp_name'];
     $namaGambar = $_FILES['file']['name'];
 
@@ -16,14 +17,13 @@ function upload_gambar(){
     if (!file_exists($file_path)) {
         mkdir($file_path, 0777, true);
     }
-    if(!$gambar){
+    if (!$gambar) {
         $response = array(
             'status' => 0,
             'message' => "Gagal menemukan gambar!"
         );
-    }
-    else{
-        if(move_uploaded_file($gambar, $file_path.'/'.$namaGambar)){
+    } else {
+        if (move_uploaded_file($gambar, $file_path . '/' . $namaGambar)) {
             $response = array(
                 'status' => 1,
                 'message' => "Sukses upload gambar!"
@@ -38,4 +38,4 @@ function upload_gambar(){
     header('Content-Type: application/json');
     echo json_encode($response);
 }
-?>
+ ?>

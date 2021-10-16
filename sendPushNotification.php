@@ -45,3 +45,4 @@ function sendPushNotification()
     header('Content-Type: application/json');
     echo $result;
 }
+ ?>
